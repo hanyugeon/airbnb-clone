@@ -10,7 +10,7 @@ class CustomUserAdmin(UserAdmin):
 
     """ Custom User Admin """
 
-    fieldsets = UserAdmin.fieldsets + (
+    fieldsets = UserAdmin.fieldsets + (  # blue something(파랭이)
         (
             "Custom Profile",
             {
