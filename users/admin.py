@@ -8,8 +8,44 @@ from . import models
 @admin.register(models.User)
 class CustomUserAdmin(UserAdmin):
 
-    """ Custom User Admin """
+    """ week01 User Admin """
 
+    fieldsets = UserAdmin.fieldsets + (
+        (
+            "Profile",
+            {
+                "fields": (
+                    "avatar",
+                    "bio",
+                    "preference",
+                    "language",
+                    "favorite_book_genre",
+                    "favorite_movie_genre",
+                    "superhost",
+                )
+            },
+        ),
+    )
+
+    list_display = (
+        "username",
+        "email",
+        "preference",
+        "language",
+        "favorite_book_genre",
+        "favorite_movie_genre",
+        "superhost",
+    )
+
+    list_filter = (
+        "preference",
+        "language",
+        "favorite_book_genre",
+        "favorite_movie_genre",
+    )
+
+    """
+    Custom User Admin 
     fieldsets = UserAdmin.fieldsets + (  # blue something(파랭이)
         (
             "Custom Profile",
@@ -26,3 +62,4 @@ class CustomUserAdmin(UserAdmin):
             },
         ),
     )
+    """
