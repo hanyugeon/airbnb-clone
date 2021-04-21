@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.admin import UserAdmin  # UserAdmin? (ctrl + 클릭)
 from . import models
 
 # Register your models here.
@@ -10,7 +10,7 @@ class CustomUserAdmin(UserAdmin):
 
     """ week01 User Admin """
 
-    fieldsets = UserAdmin.fieldsets + (
+    fieldsets = UserAdmin.fieldsets + (  # UserAdmin.fieldsets + ... 무슨 뜻인지 인지하기.
         (
             "Profile",
             {
@@ -27,7 +27,7 @@ class CustomUserAdmin(UserAdmin):
         ),
     )
 
-    list_display = (
+    list_display = (  # 유저 리스트 보여주기
         "username",
         "email",
         "preference",
@@ -37,29 +37,9 @@ class CustomUserAdmin(UserAdmin):
         "superhost",
     )
 
-    list_filter = (
+    list_filter = (  # 유저 항목별 필터 추가
         "preference",
         "language",
         "favorite_book_genre",
         "favorite_movie_genre",
     )
-
-    """
-    Custom User Admin 
-    fieldsets = UserAdmin.fieldsets + (  # blue something(파랭이)
-        (
-            "Custom Profile",
-            {
-                "fields": (
-                    "avatar",
-                    "gender",
-                    "bio",
-                    "birthdate",
-                    "language",
-                    "currency",
-                    "superhost",
-                )
-            },
-        ),
-    )
-    """
