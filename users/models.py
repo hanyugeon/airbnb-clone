@@ -59,23 +59,21 @@ class User(AbstractUser):
         (FAV_MOVIE_GENRE_MELLO, "멜로"),
     )
 
-    avatar = models.ImageField(null=True, blank=True)
+    avatar = models.ImageField(blank=True)
     bio = models.TextField(default="", blank=True)
 
     preference = models.CharField(
-        choices=PREFERENCE_LV_CHOICES, max_length=4, null=True, blank=True  # choices
+        choices=PREFERENCE_LV_CHOICES, max_length=4, blank=True  # choices
     )
 
-    language = models.CharField(
-        choices=LANGUAGE_CHOICES, max_length=4, null=True, blank=True
-    )
+    language = models.CharField(choices=LANGUAGE_CHOICES, max_length=4, blank=True)
 
     favorite_book_genre = models.CharField(
-        choices=FAV_BOOK_GENRE_CHOICES, max_length=20, null=True, blank=True
+        choices=FAV_BOOK_GENRE_CHOICES, max_length=20, blank=True
     )
 
     favorite_movie_genre = models.CharField(
-        choices=FAV_MOVIE_GENRE_CHOICES, max_length=20, null=True, blank=True
+        choices=FAV_MOVIE_GENRE_CHOICES, max_length=20, blank=True
     )
 
     superhost = models.BooleanField(default=False)

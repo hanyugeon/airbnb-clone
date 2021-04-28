@@ -10,6 +10,7 @@ class CustomUserAdmin(UserAdmin):
 
     """ week01 User Admin """
 
+    # admin.py가 패널의 구성을 바꿀 수 있다.
     fieldsets = UserAdmin.fieldsets + (  # UserAdmin.fieldsets + ... 무슨 뜻인지 인지하기.
         (
             "Profile",
