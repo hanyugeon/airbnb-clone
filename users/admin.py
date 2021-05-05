@@ -6,7 +6,7 @@ from . import models
 
 
 @admin.register(models.User)
-class CustomUserAdmin(UserAdmin):
+class UsersAdmin(UserAdmin):
 
     """ week01 User Admin """
 
@@ -20,8 +20,6 @@ class CustomUserAdmin(UserAdmin):
                     "bio",
                     "preference",
                     "language",
-                    "favorite_book_genre",
-                    "favorite_movie_genre",
                     "superhost",
                 )
             },
@@ -33,14 +31,10 @@ class CustomUserAdmin(UserAdmin):
         "email",
         "preference",
         "language",
-        "favorite_book_genre",
-        "favorite_movie_genre",
         "superhost",
     )
 
     list_filter = (  # 유저 항목별 필터 추가
         "preference",
         "language",
-        "favorite_book_genre",
-        "favorite_movie_genre",
     )

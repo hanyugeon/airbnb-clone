@@ -25,40 +25,6 @@ class User(AbstractUser):
     LANGUAGE_KOREAN = "kr"
     LANGUAGE_CHOICES = ((LANGUAGE_ENGLISH, "English"), (LANGUAGE_KOREAN, "Korean"))
 
-    FAV_BOOK_GENRE_NOVEL = "소설"
-    FAV_BOOK_GENRE_ESSAY = "수필(에세이)"
-    FAV_BOOK_GENRE_POEM = "시"
-    FAV_BOOK_GENRE_PICTURE = "그림책"
-    FAV_BOOK_GENRE_COMIC = "만화책"
-    FAV_BOOK_GENRE_CHOICES = (
-        (FAV_BOOK_GENRE_NOVEL, "소설"),
-        (FAV_BOOK_GENRE_ESSAY, "수필(에세이)"),
-        (FAV_BOOK_GENRE_POEM, "시"),
-        (FAV_BOOK_GENRE_PICTURE, "그림책"),
-        (FAV_BOOK_GENRE_COMIC, "만화책"),
-    )
-
-    FAV_MOVIE_GENRE_ACTION = "액션"
-    FAV_MOVIE_GENRE_SF = "SF(공상과학)"
-    FAV_MOVIE_GENRE_COMEDY = "코미디"
-    FAV_MOVIE_GENRE_THRILLER = "스릴러"
-    FAV_MOVIE_GENRE_WAR = "전쟁"
-    FAV_MOVIE_GENRE_SPORTS = "운동"
-    FAV_MOVIE_GENRE_FANTASY = "판타지"
-    FAV_MOVIE_GENRE_MUSIC = "음악"
-    FAV_MOVIE_GENRE_MELLO = "멜로"
-    FAV_MOVIE_GENRE_CHOICES = (
-        (FAV_MOVIE_GENRE_ACTION, "액션"),
-        (FAV_MOVIE_GENRE_SF, "SF(공상과학)"),
-        (FAV_MOVIE_GENRE_COMEDY, "코미디"),
-        (FAV_MOVIE_GENRE_THRILLER, "스릴러"),
-        (FAV_MOVIE_GENRE_WAR, "전쟁"),
-        (FAV_MOVIE_GENRE_SPORTS, "운동"),
-        (FAV_MOVIE_GENRE_FANTASY, "판타지"),
-        (FAV_MOVIE_GENRE_MUSIC, "음악"),
-        (FAV_MOVIE_GENRE_MELLO, "멜로"),
-    )
-
     avatar = models.ImageField(blank=True)
     bio = models.TextField(default="", blank=True)
 
@@ -67,13 +33,5 @@ class User(AbstractUser):
     )
 
     language = models.CharField(choices=LANGUAGE_CHOICES, max_length=4, blank=True)
-
-    favorite_book_genre = models.CharField(
-        choices=FAV_BOOK_GENRE_CHOICES, max_length=20, blank=True
-    )
-
-    favorite_movie_genre = models.CharField(
-        choices=FAV_MOVIE_GENRE_CHOICES, max_length=20, blank=True
-    )
 
     superhost = models.BooleanField(default=False)
