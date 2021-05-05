@@ -6,7 +6,7 @@ from django.contrib.auth.models import AbstractUser  # AbstractUser? (ctrl + 클
 
 class User(AbstractUser):
 
-    """ week01 User Model """
+    """ User Model Definition """
 
     PREFERENCE_LV_01 = "1"
     PREFERENCE_LV_02 = "2"
