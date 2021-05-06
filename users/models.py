@@ -8,6 +8,10 @@ class User(AbstractUser):
 
     """ week01 User Model """
 
+    GENDER_MALE = "male"
+    GENDER_FEMALE = "female"
+    GENDER_CHOICES = ((GENDER_MALE, "male"), (GENDER_FEMALE, "female"))
+
     PREFERENCE_LV_01 = "1"
     PREFERENCE_LV_02 = "2"
     PREFERENCE_LV_03 = "3"
@@ -61,6 +65,8 @@ class User(AbstractUser):
 
     avatar = models.ImageField(blank=True)
     bio = models.TextField(default="", blank=True)
+
+    gender = models.CharField(choices=GENDER_CHOICES, max_length=10, blank=True)
 
     preference = models.CharField(
         choices=PREFERENCE_LV_CHOICES, max_length=4, blank=True  # choices
