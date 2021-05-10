@@ -10,6 +10,14 @@ class ItemAdmin(admin.ModelAdmin):
 
     """ Item Admin Definition  """
 
+    list_display = (
+        "name",
+        "used_by",
+    )
+
+    def used_by(self, obj):
+        return obj.rooms.count()
+
     pass
 
 
@@ -79,6 +87,7 @@ class RoomAdmin(admin.ModelAdmin):
         "check_out",
         "instant_book",
         "count_amenities",
+        "count_photos",
     )
 
     ordering = ("name", "price")
@@ -101,9 +110,11 @@ class RoomAdmin(admin.ModelAdmin):
         "house_rules",
     )  # ManyToMany 만 가능
 
-    def count_amenities(slef, obj):
-        print(obj.amenities.all())
-        return "potato"
+    def count_amenities(self, obj):
+        return obj.amenities.count()
+
+    def count_photos(self, obj):
+        return obj.photos.count()
 
     count_amenities.short_description = "hello_sexy!"
 
