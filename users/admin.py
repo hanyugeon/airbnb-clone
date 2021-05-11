@@ -28,6 +28,8 @@ class CustomUserAdmin(UserAdmin):
         ),
     )
 
+    list_filter = UserAdmin.list_filter + ("superhost",)
+
     list_display = (  # 유저 리스트 보여주기
         "username",
         "first_name",
