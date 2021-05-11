@@ -8,7 +8,7 @@ from . import models
 @admin.register(models.User)
 class CustomUserAdmin(UserAdmin):
 
-    """ week01 User Admin """
+    """ Custom User Admin """
 
     # admin.py가 패널의 구성을 바꿀 수 있다.
     fieldsets = UserAdmin.fieldsets + (  # UserAdmin.fieldsets + ... 무슨 뜻인지 인지하기.
@@ -18,10 +18,10 @@ class CustomUserAdmin(UserAdmin):
                 "fields": (
                     "avatar",
                     "bio",
-                    "preference",
+                    "gender",
+                    "birthdate",
                     "language",
-                    "favorite_book_genre",
-                    "favorite_movie_genre",
+                    "currency",
                     "superhost",
                 )
             },
@@ -30,17 +30,14 @@ class CustomUserAdmin(UserAdmin):
 
     list_display = (  # 유저 리스트 보여주기
         "username",
+        "first_name",
+        "last_name",
+        "gender",
         "email",
-        "preference",
+        "is_active",
         "language",
-        "favorite_book_genre",
-        "favorite_movie_genre",
+        "currency",
         "superhost",
-    )
-
-    list_filter = (  # 유저 항목별 필터 추가
-        "preference",
-        "language",
-        "favorite_book_genre",
-        "favorite_movie_genre",
+        "is_staff",
+        "is_superuser",
     )
