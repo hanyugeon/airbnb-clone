@@ -32,6 +32,6 @@ class Review(core_models.TimeStampedModel):
             + self.cleanliness
             + self.value
         ) / 6
-        return round(avr, 2)
+        return round(avr, 2)  # round() 반올림 함수
 
     rating_average.short_description = "rating"
