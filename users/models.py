@@ -23,7 +23,7 @@ class User(AbstractUser):  # AbstractUser : 기존의 User 모델을 사용하�
     CURRENCY_KRW = "krw"
     CURRENCY_CHOICES = ((CURRENCY_USD, "USD"), (CURRENCY_KRW, "KRW"))
 
-    avatar = models.ImageField(null=True, blank=True)
+    avatar = models.ImageField(upload_to="avatars", blank=True)
     gender = models.CharField(
         choices=GENDER_CHOICES, max_length=10, null=True, blank=True
     )

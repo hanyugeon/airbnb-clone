@@ -8,14 +8,28 @@ class Conversation(core_models.TimeStampedModel):
 
     """ Conversation Model Definition """
 
-    participants = models.ManyToManyField("users.User", blank=True)
+    participants = models.ManyToManyField(
+        "users.User", related_name="conversation", blank=True
+    )
 
     def __str__(self):
         usernames = []
         for user in self.participants.all():  # participants, 모든 user의 QuerySet을 줄 것임.
             usernames.append(user.username)
 
-        return str(self.created)
+        return ", ".join(
+            usernames
+        )  # QuertSet에 관한 내용(중요), 8.2강의 8~10분 참고. / 왜 나는 한개 밖에 안나오지? (오류 해결하기.)
+
+    def count_messages(self):
+        return self.messages.count()
+
+    count_messages.short_description = "Number of Messages"
+
+    def count_participants(self):
+        return self.participants.count()
+
+    count_participants.short_description = "Number of participants"
 
 
 class Message(core_models.TimeStampedModel):
