@@ -88,7 +88,7 @@ class Room(core_models.TimeStampedModel):
         for review in all_reviews:
             all_ratings += (
                 review.rating_average()
-            )  # review.rating_average()은 reviews > models.py 에 있는 rating_average() 함수를 이용함.
+            )  # review.rating_average()은 reviews > models.py 에 있는 rating_average() 함수를 이용
         return all_ratings / len(
             all_reviews
         )  # len(all_reviews)는 리스트 all_reveiws의 크기를 int으로 반환

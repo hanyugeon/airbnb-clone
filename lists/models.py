@@ -1,8 +1,6 @@
 from django.db import models
 from core import models as core_models
 
-# Create your models here.
-
 
 class List(core_models.TimeStampedModel):
 
@@ -16,6 +14,6 @@ class List(core_models.TimeStampedModel):
         return self.name
 
     def count_rooms(self):
-        return self.rooms.count()
+        return self.rooms.count()   # count() 메소드
 
     count_rooms.short_description = "Number of Rooms"  # .short_description 이름 바꿔 줌
