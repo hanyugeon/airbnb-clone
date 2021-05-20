@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.html import mark_safe  # mark_safe, 안전한 html 코드임으로 Django에서 사용하도록 함.
 from . import models
 
 
@@ -18,6 +19,13 @@ class ItemAdmin(admin.ModelAdmin):
     pass
 
 
+class PhotoInline(
+    admin.TabularInline
+):  # StackedInline도 기억하고 후에 활용해보기!, 서로의 장단점 및 ForeinKey의 활용성 생각해보기.
+
+    model = models.Photo
+
+
 @admin.register(models.Room)
 class RoomAdmin(admin.ModelAdmin):
 
@@ -31,6 +39,7 @@ class RoomAdmin(admin.ModelAdmin):
                     "name",
                     "description",
                     "country",
+                    "city",
                     "address",
                     "price",
                 )
@@ -108,6 +117,10 @@ class RoomAdmin(admin.ModelAdmin):
         "house_rules",
     )  # ManyToMany 만 가능
 
+    search_fields = ("=city", "^host__username")  # ^city, =city, @city, None 차이점?
+
+    raw_id_fields = ("host",)
+
     def count_amenities(self, obj):
         return obj.amenities.count()
 
@@ -116,7 +129,7 @@ class RoomAdmin(admin.ModelAdmin):
 
     count_amenities.short_description = "hello_sexy!"
 
-    search_fields = ("=city", "^host__username")  # ^city, =city, @city, None 차이점?
+    inlines = (PhotoInline,)
 
 
 @admin.register(models.Photo)
@@ -124,4 +137,12 @@ class PhotoAdmin(admin.ModelAdmin):
 
     """ Photo Admin Definition """
 
-    pass
+    list_display = (
+        "__str__",
+        "get_thumbnail",
+    )
+
+    def get_thumbnail(self, obj):
+        return mark_safe(f'<img width="64px" height="64px" src="{obj.file.url}" />')
+
+    get_thumbnail.short_description = "Thumbnail"
