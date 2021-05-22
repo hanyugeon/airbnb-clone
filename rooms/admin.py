@@ -42,6 +42,7 @@ class RoomAdmin(admin.ModelAdmin):
                     "city",
                     "address",
                     "price",
+                    "room_type",
                 )
             },
         ),
@@ -128,6 +129,7 @@ class RoomAdmin(admin.ModelAdmin):
         return obj.photos.count()
 
     count_amenities.short_description = "hello_sexy!"
+    count_photos.short_description = "photo count"
 
     inlines = (PhotoInline,)
 

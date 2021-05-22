@@ -89,13 +89,13 @@ class Room(core_models.TimeStampedModel):
     def total_rating(self):
         all_reviews = self.reviews.all()  # self.reviews.all()은 list 반환
         all_ratings = 0
-        for review in all_reviews:
-            all_ratings += (
-                review.rating_average()
-            )  # review.rating_average()은 reviews > models.py 에 있는 rating_average() 함수를 이용
-        return all_ratings / len(
-            all_reviews
-        )  # len(all_reviews)는 리스트 all_reveiws의 크기를 int으로 반환
+        if len(all_reviews) > 0:
+            for review in all_reviews:
+                all_ratings += review.rating_average()
+                # review.rating_average()은 reviews > models.py 에 있는 rating_average() 함수를 이용
+
+            return all_ratings / len(all_reviews)
+        return 0
 
 
 class Photo(core_models.TimeStampedModel):
