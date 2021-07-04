@@ -10,4 +10,11 @@
         <li>{{room.name}} / ${{room.price}} / {{room.city}}</li>
     {% endfor %}
     </ul>
+
+    <h5>Page {{page}} of {{page_count}}</h5>
+
+    {% for page in page_range %}
+        <a href="?page={{page}}">{{page}}</a> <!-- a href 태그의 기능 숙지하기. -->
+    {% endfor %}
+
 {% endblock content %}
