@@ -11,10 +11,19 @@
     {% endfor %}
     </ul>
 
-    <h5>Page {{page}} of {{page_count}}</h5>
+    <h5>
+        {% if page != 1 %}
+            <a href="?page={{page|add:-1}}">Previous</a> <!-- a href 태그의 기능 숙지하기. -->
+        {% endif %}
+        
+        Page {{page}} of {{page_count}}
 
-    {% for page in page_range %}
-        <a href="?page={{page}}">{{page}}</a> <!-- a href 태그의 기능 숙지하기. -->
-    {% endfor %}
+        {% if page != page_count %}
+            <a href="?page={{page|add:1}}">Next</a>
+        {% endif %}
+
+        
+    </h5>
+
 
 {% endblock content %}
