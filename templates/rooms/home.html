@@ -5,8 +5,9 @@
 {% endblock page_name %}
 
 {% block content %}
+    <ul>
     {% for room in potato %}
-        <h1>{{room.name}} / ${{room.price}} / {{room.city}}</h1>
+        <li>{{room.name}} / ${{room.price}} / {{room.city}}</li>
     {% endfor %}
-
+    </ul>
 {% endblock content %}
