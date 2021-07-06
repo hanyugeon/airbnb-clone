@@ -6,21 +6,22 @@
 
 {% block content %}
     <ul>
-    {% for room in rooms.object_list %}
+    {% for room in page.object_list %}
         <li>{{room.name}} / ${{room.price}} / {{room.city}}</li>
     {% endfor %}
     </ul>
 
     <h5>
-        {% if rooms.has_previous %}
-            <a href="?page={{rooms.number|add:-1}}">Previous</a> <!-- a href 태그의 기능 숙지하기. -->
+        {% if page.has_previous %}
+            <a href="?page={{page.previous_page_number}}">Previous</a> <!-- a href 태그의 기능 숙지하기. -->
         {% endif %}
         
-        Page {{rooms.number}} of {{rooms.paginator.num_pages}}
+        Page {{page.number}} of {{page.paginator.num_pages}}
 
-        {% if rooms.has_next %}
-            <a href="?page={{rooms.number|add:1}}">Next</a>
+        {% if page.has_next %}
+            <a href="?page={{page.next_page_number}}">Next</a> <!-- page.number|add:(int) 의 역할? / page.next_page_number 함수 -->
         {% endif %}
+        <!-- ?/page=3141592 입력해보기!? 어떠한 현상이 발생하나?!-->
     </h5>
 
 
