@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block page_name %}
+    Home
+{% endblock page_name %}
+
+{% block content %}
+    <ul>
+    {% for room in object_list %}
+        <li>{{room.name}} / ${{room.price}} / {{room.city}}</li>
+    {% endfor %}
+    </ul>
+
+    <h5>
+        {% if page_obj.has_previous %}
+            <a href="?page={{page_obj.previous_page_number}}">Previous</a>
+        {% endif %}
+        
+        Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}
+
+        {% if page_obj.has_next %}
+            <a href="?page={{page_obj.next_page_number}}">Next</a>
+        {% endif %}
+        <!-- ?/page=3141592 입력해보기!? 어떠한 현상이 발생하나?!-->
+    </h5>
+
+
+{% endblock content %}
