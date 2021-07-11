@@ -8,11 +8,13 @@
 
     {{now}}
 
-    <ul>
     {% for room in rooms %}
-        <li>{{room.name}} / ${{room.price}} / {{room.city}}</li>
-    {% endfor %}
-    </ul>
+        <h4>
+            <a href="{% url "rooms:detail" room.pk %}"> <!-- url의 "namespace:경로" arguments-->
+                {{room.name}} / ${{room.price}} / {{room.city}}>
+            </a>
+        </h4>
+    {% endfor %}    
 
     <h5>
         {% if page_obj.has_previous %}
